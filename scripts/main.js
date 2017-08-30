@@ -12,40 +12,26 @@
 // for (var i = 0, sum = 0; i < cardPicks.length; sum += cardPicks[i++]);
 function handValue (hand) {
 
-var total = 0;
-total += hand[i];
+let total= 0;
+
 for (var i = 0; i < hand.length; i++){
-  if (hand[i] === "K"||"Q"||"J"){
-    hand[i] = 10;
-  }
-   else if (hand[i] >=1 && hand[i] >=10) {
-    return hand[i];
-   }
-    else if (hand[i] ==="A"){
-      if (total<=20&&total>=12){
-        hand[i]= 1;
+
+  if (Number(hand[i]) > 0 && Number(hand[i]) < 10) {
+    total += Number(hand[i]);
+  } else if (hand[i] === "A"){
+     if (total<11){
+       total += 11;
+     }else if (total>10 && total<21){
+       total += 1;
       }
-      else{
-        hand[i]=10
-    }
-   }
+    }else if(hand[i] === "K"||hand[i]==="Q"|| hand[i]==="J"){
+      total += 10;
+     }
 
 }
-// var addition = [];
-// addition.push(2);
-// addition.push(3);
-//
-// var total = 0;
-// for (var i = 0; i < addition.length; i++)
-// {
-//     total += addition[i];
-// }
-
-
-/* -----  Hints ------
-
-1..10   ==> Worth face value (1 = 1, 4 = 4, etc)
-K, Q, J ==> Worth 10
-A       ==> Worth 1 or 11
-
-*/
+if (total >21 && hand.includes("A")){
+  total-= 10;
+}
+console.log(total)
+return total;
+}
