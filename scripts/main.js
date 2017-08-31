@@ -16,7 +16,7 @@ let total= 0;
 
 for (var i = 0; i < hand.length; i++){
 
-  if (Number(hand[i]) > 0 && Number(hand[i]) < 10) {
+  if (Number(hand[i]) > 0 && Number(hand[i]) < 11) {
     total += Number(hand[i]);
   } else if (hand[i] === "A"){
      if (total<11){
@@ -29,7 +29,7 @@ for (var i = 0; i < hand.length; i++){
      }
 
 }
-if (total >21 && hand.includes("A")){
+if (total >22 && hand.includes("A")){
   total-= 10;
 }
 console.log(total)
